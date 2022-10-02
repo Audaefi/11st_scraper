@@ -20,7 +20,7 @@ def main():
     build_df()
     for count in range(len(keyword)):
         build_driver()
-        scroll_range(0, 20000)
+        scroll_range(0, 5000)
         get_elements()
 
         if pages > 1:
@@ -49,7 +49,8 @@ def build_driver():
 
 
 def scroll_range(start_pixel, end_pixel):
-    for pixel in range(start_pixel, end_pixel, 2500):
+    driver.execute_script("document.body.style.transform = 'scale(0.25)'")
+    for pixel in range(start_pixel, end_pixel, 500):
         driver.execute_script(f"window.scrollTo(0, {pixel})")
         time.sleep(1.5)
 
@@ -86,7 +87,7 @@ def multi_pages():
     current_page = 1
     for page_num in range(current_page, pages):
         next_arrow_btn()
-        scroll_range(0, 20000)
+        scroll_range(0, 5000)
         get_elements()
         current_page += 1
 
